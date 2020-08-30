@@ -1,4 +1,4 @@
-# Afya Back-End for Team-51X
+# Afya Backend version for Team-51X
 
 ## What is Afya?
 Afya is a Computerized Medical Record, a digital health record that stores and secures your health information: treatments, test results, allergies...
