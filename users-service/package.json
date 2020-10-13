@@ -1,0 +1,38 @@
+{
+  "name": "users-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "db:migrate": "sequelize db:migrate",
+    "db:migrate:undo": "sequelize db:migrate:undo",
+    "watch": "babel-watch -L src/index.js"
+  },
+  "devDependencies": {
+    "babel-watch": "^7.0.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/polyfill": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "async": "^3.2.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "graphql": "^15.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "mariadb": "^2.4.2",
+    "mysql2": "^2.2.5",
+    "nexmo": "^2.9.1",
+    "nodemailer": "^6.4.13",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "sequelize": "^5.22.3",
+    "sequelize-cli": "^6.2.0",
+    "ua-parser-js": "^0.7.22",
+    "uuid": "^8.3.0"
+  }
+}

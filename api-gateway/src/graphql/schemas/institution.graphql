@@ -1,0 +1,50 @@
+const { gql } = require('apollo-server-express');
+
+module.exports = gql`
+
+    type Institution {
+        id: ID!
+        name: String!
+        description: String
+        phoneNumber: String!
+        email: String
+        website: String
+        logo: String
+        image: String
+        type: Type!
+        adresse: Adresse!
+        status: Int!
+        createdAt: DateTime
+        updatedAt: DateTime
+        deletedAt: DateTime
+        agents: [Agent!]
+        prestations: [Prestation!]
+        mutuelles: [Mutuelle!]
+        departements: [Departement!]
+    }
+
+    extend type Query {
+        findAllInstitution: [Institution!]
+    }
+
+    extend type Mutation {
+        createInstitution(input: inputInstitution!): Institution!
+    }
+
+    type inputInstitution {
+        typeId: String!
+        adresseId: String!
+        name: String!
+        description: String
+        phoneNumber: String!
+        email: String
+        website: String
+        adress1: String!
+        adress2: String
+        city: String!
+        state: String!
+        zip: String
+        country: String!
+    }
+
+`;

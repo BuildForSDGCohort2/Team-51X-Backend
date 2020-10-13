@@ -1,0 +1,23 @@
+const { gql } = require('apollo-server-express');
+
+module.exports = gql`
+
+    type Log {
+        id: String!
+        user: User!
+        events: Event!
+        log_date: String!
+        user_agent: String
+        ip_adress: String
+        geolocation: String
+        status: Int
+        createdAt: DateTime!
+        updatedAt: DateTime!
+    }
+
+    extend type Query {
+        findAllLogs: [Log!]
+        findLog(logId: String!): Log
+    }
+
+`;

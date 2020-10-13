@@ -1,0 +1,59 @@
+const { gql } = require('apollo-server-express');
+
+module.exports = gql`
+
+    type Agent {
+        id: ID!
+        user: User!
+        matricule: String
+        civilite: String!
+        nom: String!
+        prenom: String!
+        sexe: String!
+        phoneNumber: String!
+        email: String
+        securiteSocial: String
+        avatar: String
+        status: Int!
+        createdAt: DateTime
+        updatedAt: DateTime
+        deletedAt: DateTime
+        fonction: Fonction!
+        institution: Institution
+        departement: Departement
+        adresse: Adresse!
+        recettes: [Recette!]
+    }
+
+    extend type Query {
+        findAllAgent: [Agent!]
+        findAgentById(agentId: String!): Agent
+        findAgentByUserId(userId: String!): Agent
+    }
+
+    extend type Mutation {
+        createAgent(input: inputAgent!): Agent!
+    }
+
+    type inputAgent {
+        userId: String!
+        fonctionId: String!
+        institutionId: String
+        departementId: String
+        matricule: String
+        civilite: String!
+        nom: String!
+        prenom: String!
+        sexe: String!
+        phoneNumber: String!
+        email: String
+        securiteSocial: String
+        adress1: String!
+        adress2: String
+        city: String!
+        state: String!
+        zip: String
+        country: String!
+    }
+
+`;

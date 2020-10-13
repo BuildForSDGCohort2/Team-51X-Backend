@@ -1,0 +1,111 @@
+version: "3"
+services:
+    api-gateway:
+        build: "./api-gateway"
+        depends_on:
+            - users-service
+            - institution-service
+            - health-service
+            - medi-service
+            - messenger-service
+        environment: 
+            - 
+        ports:
+            - 7001:7001
+        volumes:
+            - ./api-gateway:/opt/app
+
+    users-service:
+        build: "./users-service"
+        depends_on:
+            - users-service-db
+        environment: 
+            - DB_URL=mysql://root:password@users-service-db/db?charset=UTF8
+        ports:
+            - 7100:7100
+        volumes: 
+            - ./users-service:/opt/app
+    
+    users-service-db:
+        environment: 
+            - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_DATABASE=db
+        image: mariadb:10.4
+        ports: 
+            - 0.0.0.0:7200:3306
+
+    institution-service:
+        build: "./institution-service"
+        depends_on:
+            - institution-service-db
+        environment: 
+            - DB_URL=mysql://root:password@institution-service-db/db?charset=UTF8
+        ports:
+            - 7101:7101
+        volumes: 
+            - ./institution-service:/opt/app
+
+    institution-service-db:
+        environment: 
+            - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_DATABASE=db
+        image: mariadb:10.4
+        ports: 
+            - 0.0.0.0:7201:3306
+
+    health-service:
+        build: "./health-service"
+        depends_on:
+            - health-service-db
+        environment: 
+            - DB_URL=mysql://root:password@health-service-db/db?charset=UTF8
+        ports:
+            - 7102:7102
+        volumes: 
+            - ./health-service:/opt/app
+    
+    health-service-db:
+        environment: 
+            - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_DATABASE=db
+        image: mariadb:10.4
+        ports: 
+            - 0.0.0.0:7202:3306
+
+    medi-service:
+        build: "./medi-service"
+        depends_on:
+            - medi-service-db
+        environment: 
+            - DB_URL=mysql://root:password@medi-service-db/db?charset=UTF8
+        ports:
+            - 7103:7103
+        volumes: 
+            - ./medi-service:/opt/app
+
+    medi-service-db:
+        environment: 
+            - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_DATABASE=db
+        image: mariadb:10.4
+        ports: 
+            - 0.0.0.0:7203:3306
+
+    messenger-service:
+        build: "./messenger-service"
+        depends_on:
+            - messenger-service-db
+        environment: 
+            - DB_URL=mysql://root:password@messenger-service-db/db?charset=UTF8
+        ports:
+            - 7104:7104
+        volumes: 
+            - ./messenger-service:/opt/app
+
+    messenger-service-db:
+        environment: 
+            - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_DATABASE=db
+        image: mariadb:10.4
+        ports: 
+            - 0.0.0.0:7204:3306

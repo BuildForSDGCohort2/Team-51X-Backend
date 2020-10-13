@@ -1,0 +1,23 @@
+const { gql } = require('apollo-server-express');
+
+module.exports = gql`
+
+    type Antecedent {
+        id: ID!
+        key: String!
+        value: String!
+        patient: Patient!
+        createdBy: String!
+        createdAt: DateTime
+        updatedAt: DateTime
+    }
+
+    extend type Query {
+        findAllAntecedent: (patientId: String!): Antecedent!
+    }
+
+    extend type Mutation {
+        createAntecedent(key: String!, value: String!, patientId: String!, createdBy: String!): Antecedent!
+    }
+
+`;

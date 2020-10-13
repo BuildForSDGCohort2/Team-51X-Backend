@@ -1,0 +1,93 @@
+const { gql } = require('apollo-server-express');
+
+module.exports = gql`
+
+    type Patient {
+        id: ID!
+        afiaId: String!
+        userId: String!
+        mutuelleId: String
+        prenom: String!
+        nom: String!
+        sexe: String!
+        dateNaissance: DateTime!
+        lieuNaissance: String!
+        securiteSocial: String
+        situationFamiliale: String
+        profession: String
+        groupeSanguin: String
+        phoneNumber: String!
+        email: String
+        avatar: String
+        status: Int!
+        createdBy: String
+        createdAt: DateTime
+        updatedAt: DateTime
+        deletedAt: DateTime
+        adresse: Adresse!
+        mesures: [Mesure!]
+        antecedents: [Antecedent!]
+        vaccins: [Vaccin!]
+        files: [File!]
+        consultations: [Consultation!]
+        contacts: [Contact!]
+        traitements: [Traitement!]
+        ficheObservations: [FicheObservation!]
+        analyses: [Analyse!]
+    }
+
+    extend type Query {
+        findAllAgent: [Patient!]
+        findAgentById(id: ID!): Patient
+        findAgentByUserId(userId: String!): Patient
+        findAgentByAfiaId(afiaId: String!): Patient
+        findAgentByAgent(createdBy: String!): Patient
+        searchPatient(search: String!): Patient
+    }
+
+    extend type Mutation {
+        createPatient(input: inputPatient!): createResponse!
+    }
+
+    type createResponse {
+        id: ID!
+        afiaId: String!
+        userId: String!
+        mutuelleId: String
+        adresseId: String!
+        prenom: String!
+        nom: String!
+        sexe: String!
+        dateNaissance: DateTime!
+        lieuNaissance: String!
+        securiteSocial: String
+        situationFamiliale: String
+        profession: String
+        groupeSanguin: String
+        phoneNumber: String!
+    }
+
+    type inputPatient {
+        afiaId: String!
+        userId: String!
+        mutuelleId: String
+        prenom: String!
+        nom: String!
+        sexe: String!
+        dateNaissance: DateTime!
+        lieuNaissance: String!
+        securiteSocial: String
+        situationFamiliale: String
+        profession: String
+        groupeSanguin: String
+        phoneNumber: String!
+        email: String
+        adress1: String!
+        adress2: String
+        city: String!
+        state: String!
+        zip: String
+        country: String!
+    }
+
+`;

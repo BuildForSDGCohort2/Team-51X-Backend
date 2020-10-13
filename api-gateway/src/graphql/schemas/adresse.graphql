@@ -1,0 +1,35 @@
+const { gql } = require('apollo-server-express');
+
+module.exports = gql`
+
+    type Adresse {
+        id: ID!
+        adress1: String!
+        adress2: String
+        city: String!
+        state: String!
+        zip: String
+        country: String!
+        createdAt: DateTime
+        updatedAt: DateTime
+
+    }
+
+    extend type Query {
+        findAllAdresse: [Adresse!]
+    }
+
+    extend type Mutation {
+        createInstitution(input: inputAdresse!): Adresse!
+    }
+
+    type inputAdresse {
+        adress1: String!
+        adress2: String
+        city: String!
+        state: String!
+        zip: String
+        country: String!
+    }
+
+`;
